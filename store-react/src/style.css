@@ -45,8 +45,8 @@ body {
   align-items: center;
 }
 
-/* HOME + ABOUT */
-.home-about {
+/* HOME + ABOUT + CHECKOUT */
+.home-about-checkout {
   margin: 50px;
 }
 
@@ -120,4 +120,23 @@ body {
 
 .quantity-input {
   font-size: 1rem;
+}
+
+.subtotal {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 10rem;
+}
+
+.checkout-link {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin:auto;
+  margin-top: 2rem;
+  width: 20%;
+  color: green;
+  border: 4px solid green;
+  padding: 5px;
 }
