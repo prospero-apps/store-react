@@ -21,33 +21,50 @@ function App() {
     const data = await fetch('https://fakerapi.it/api/v1/products');    
     const allProducts = await data.json();
     const products = allProducts.data;
-    console.log(allProducts);
     setItems(products);
   }
+  
+  const addToCart = (id) => {
+    const alreadyInCart = cart.some(element => element.selectedItem.id === id);
 
-  // const addToCart = (id) => {
-  //   const newItem = {
-  //     selectedItem: items.find(item => item.itemId === id),
-  //     count: 1
-  //   }
-  //   setCart(...cart, newItem);
-  // }
+    const newItem = {
+      selectedItem: items.find(item => item.id === id),
+      count: 1
+    }
+    if (!alreadyInCart) {
+      setCart(arr => [...arr, newItem]);
+    }
+  }
+
+  const changeCount = (id, value) => {
+    setCart(cart.map(item => 
+      item.selectedItem.id === id
+      ? {...item, count: value}
+      : item) 
+    )
+  }
+
+  const deleteItem = (id) => {
+    setCart(cart.filter(item =>
+      item.selectedItem.id !== id))
+  }
+
 
   return (
     <div id='main-container'>      
       <BrowserRouter>
-        <Header items={items} cart={cart}/>
+        <Header cart={cart}/>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/store' element={<Store/>}/>
-          <Route path='/store/:id' element={<SingleProduct/>}/>
+          <Route path='/store' element={<Store items={items} cart={cart} addToCart={addToCart}/>}/>
+          <Route path='/store/:id' element={<SingleProduct addToCart={addToCart}/>}/>
           <Route path='/about' element={<About/>}/>
-          <Route path='/cart' element={<Cart/>}/>
+          <Route path='/cart' element={<Cart cart={cart} changeCount={changeCount} deleteItem={deleteItem}/>}/>
           <Route path='/checkout' element={<Checkout/>}/>
         </Routes>
       </BrowserRouter>
     </div>    
-  );
+  ); 
 }
 
 export default App;

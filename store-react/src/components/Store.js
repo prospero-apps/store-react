@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../style.css';
 import StoreProduct from './StoreProduct';
-import { useLocation } from 'react-router-dom';
 
-const Store = () => {
-  const location = useLocation();
-  let { items, cart } = location.state;
-  console.log(location.state);
-
+const Store = ({ items, cart, addToCart }) => {
   return (
     <div className='store-display'>
       {items.map(item => 
-        <StoreProduct key={item.id}        
-          itemId={item.id}
-          image={item.image}
-          name={item.name}
-          price={item.price}
-          items={items}
+        <StoreProduct key={item.id} 
+          item={item}
           cart={cart}
-          // addToCart={addToCart}
+          addToCart={addToCart}
         />
       )}      
     </div>

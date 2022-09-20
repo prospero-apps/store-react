@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
+import React from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import '../style.css';
 
-const SingleProduct = () => {
-  let { id } = useParams();
+const SingleProduct = ({addToCart }) => {
   const location = useLocation();
-  const { image, name, price, items } = location.state;
+  const { item } = location.state;
 
-  useEffect(() => {
-    console.log(id)
-    console.log(image, name, price, items)
-  }, [])
- 
+  const toCart = (id) => {
+    addToCart(id);
+  }
+  
   return (
     <div className='single-product'>
-      <h1>{name}</h1>
-      <img src={image} alt='product'/>
-      <h2>${price}</h2>
-      <button className='add-button'>Add to cart</button> 
-      <Link to='/store' state={{items}}>Go back</Link> 
+      <h1>{item.name}</h1>
+      <img src={item.image} alt='product'/>
+      <h2>${item.price}</h2>
+      <button onClick={() => toCart(item.id)} className='add-button'>Add to cart</button> 
+      <Link to='/store'>Go back</Link> 
     </div>
   )
 }

@@ -45,6 +45,11 @@ body {
   align-items: center;
 }
 
+/* HOME + ABOUT */
+.home-about {
+  margin: 50px;
+}
+
 /* STORE */
 .store-display {
   display: flex;
@@ -92,3 +97,27 @@ body {
   color: black;
 }
 
+/* CART */
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr 2fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem;
+}
+
+.product-icon {
+  height: 4rem;
+}
+
+.trash-image {
+  height: 3rem;
+}
+
+.trash-image:hover {
+  cursor: pointer;
+}
+
+.quantity-input {
+  font-size: 1rem;
+}
