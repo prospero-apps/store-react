@@ -51,7 +51,7 @@ function App() {
 
 
   return (
-    <div id='main-container'>      
+    <div id='main-container' data-testid='main-container'>      
       <BrowserRouter>
         <Header cart={cart}/>
         <Routes>
