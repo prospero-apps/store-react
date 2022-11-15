@@ -52,7 +52,7 @@ function App() {
 
   return (
     <div id='main-container' data-testid='main-container'>      
-      <BrowserRouter>
+      <BrowserRouter basename={'/store-react'}>
         <Header cart={cart}/>
         <Routes>
           <Route path='/' element={<Home/>}/>
